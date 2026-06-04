@@ -47,7 +47,7 @@ Frameworks :: Web APIs, Node.js, Agentic AI Architectures
 
 *   **Commercial Asset Store:** [Gumroad Portal](https://ontheway2.gumroad.com)
 *   **Open-Source Repositories:** [GitHub Organization](https://github.com/onthewaygames)
-*   **Business Inquiries:** [LinkedIn Profile](https://linkedin.com)
+*   **Business Inquiries:** [LinkedIn Profile](https://www.linkedin.com/in/burcosmankilavuz/)
 
 ---
 *“Yapmadıkça hiçbir şey değişmez.”*
