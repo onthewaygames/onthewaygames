@@ -49,7 +49,7 @@ Frameworks :: Web APIs, Node.js, Agentic AI Architectures
 ### 🔗 Coordinates & Socials
 
 *   **Commercial Asset Store:** [Gumroad Portal](https://ontheway2.gumroad.com)
-*   **Developer Log & Media:** [YouTube Channel](https://youtube.com/@onthewaygames) · [TikTok Page](https://tiktok.com/@onthewaygames)
+*   **Developer Log & Media:** [YouTube Channel](https://youtube.com/@onthewaygames) · [Instagram (Personal)](https://www.instagram.com/burcosmankilavuz) · [TikTok Page](https://tiktok.com/@onthewaygames)
 *   **Open-Source Repositories:** [GitHub Organization](https://github.com/onthewaygames)
 *   **Business Inquiries:** [LinkedIn Profile](https://www.linkedin.com/in/burcosmankilavuz/)
 
