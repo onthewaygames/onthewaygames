@@ -1,5 +1,4 @@
 # 🪐 OnTheWay Games
-> **"Cassette Futurism, Soviet Brutalism, and the beauty of dystopian dreams."**
 
 Welcome to the digital command center of **OnTheWay Games**. We are a small indie collective building atmospheric game worlds, brutalist low-poly asset packs, and experimental toolkits.
 
