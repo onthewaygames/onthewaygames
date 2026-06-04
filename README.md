@@ -3,30 +3,33 @@ An independent game development studio crafting atmospheric, high-fidelity inter
 
 ---
 
-### 🚀 Active Developments
+### 🎮 Featured Project: Robo XBLNR / The Bloom
 
-#### 🔹 [Robo XBLNR / The Bloom] (In Development)
-*   **Genre:** Atmospheric Adventure / Narrative Survival
-*   **Platform:** PC & Console (Unreal Engine 5)
-*   **Status:** Pre-production / Lore and Art Direction phase. A narrative-driven experience set in a post-cataclysmic environment with a focus on immersive soundscapes and modular architecture.
+We are currently developing **Robo XBLNR** (Codename: *The Bloom*), an atmospheric narrative-survival game built on Unreal Engine 5. 
 
-#### 🔹 [Brutalist & Soviet Architecture Modular Pack](https://ontheway2.gumroad.com) (Released)
-*   **Type:** 3D Asset Package
-*   **Engine compatibility:** Unreal Engine 5 (Lumen / Nanite optimized), Blender
-*   **Status:** Live on Gumroad. A professional-grade modular kit containing game-ready architecture, modular roads, and props.
+*   **The Setting:** Set in a dystopian, post-USSR solarpunk landscape, where massive concrete brutalist structures meet overgrowing, toxic hybrid flora.
+*   **The Premise:** You survive the "Pollen Crisis" by managing dual resources (Scrap and Energy), navigating vertical modular structures, and decoding logs through a retro-futuristic AI radio system.
+*   **Visual Direction:** Built using high-fidelity Unreal Engine 5 rendering (Lumen, Virtual Shadow Maps) combined with a retro-futuristic, Cassette Futurism aesthetic.
+
+---
+
+### 🚀 Active Releases
+
+#### 🔹 [Brutalist & Soviet Architecture Modular Pack](https://ontheway2.gumroad.com) (Asset Pack)
+*   **Type:** 3D Asset Package for UE5 & Blender
+*   **Status:** Live. Optimized for Lumen and Nanite. Contains modular roads, brutalist blocks, and street furniture.
 
 #### 🔹 [AP Validation Toolkit](https://github.com/onthewaygames/ap-validation) (Open Source)
 *   **Type:** Client-side Developer Tool
-*   **Stack:** HTML5, CSS3, Vanilla JS
-*   **Status:** Live. A GDPR-compliant offline AP verification tool optimizing IBAN and bank routing check routines.
+*   **Status:** Live. GDPR-compliant offline Accounts Payable validation tool for IBAN format and checksum matching.
 
 ---
 
 ### 👥 Creative Collective
 
-*   **Lead Technical Artist & Developer:** Burç Kılavuz (Engine pipelines, 3D asset creation, technical implementation)
-*   **Lead Writer & Game Designer:** Rogan (Narrative design, worldbuilding, system design)
-*   **Audio Engineer & Composer:** Osman (Synthesizer environments, audio engineering, spatial sound design)
+*   **Burç Kılavuz** — Lead Technical Artist & Developer *(Engine pipelines, 3D assets, UI/UX)*
+*   **Rogan** — Lead Writer & Game Designer *(Narrative architecture, worldbuilding)*
+*   **Osman** — Audio Engineer & Composer *(Synthesizer soundscapes, ambient sound design)*
 
 *We utilize a dedicated agentic AI workflow (Anastasia System) to optimize UI/UX layouts, script validation routines, and coordinate project roadmaps.*
 
@@ -43,9 +46,10 @@ Frameworks :: Web APIs, Node.js, Agentic AI Architectures
 
 ---
 
-### 🔗 Portals & Contact
+### 🔗 Coordinates & Socials
 
 *   **Commercial Asset Store:** [Gumroad Portal](https://ontheway2.gumroad.com)
+*   **Developer Log & Media:** [YouTube Channel](https://youtube.com/@onthewaygames) · [TikTok Page](https://tiktok.com/@onthewaygames)
 *   **Open-Source Repositories:** [GitHub Organization](https://github.com/onthewaygames)
 *   **Business Inquiries:** [LinkedIn Profile](https://www.linkedin.com/in/burcosmankilavuz/)
 
