@@ -28,10 +28,7 @@ We are currently developing **Robo XBLNR** (Codename: *The Bloom*), an atmospher
 ### 👥 Creative Collective
 
 *   **Burç Kılavuz** — Lead Technical Artist & Developer *(Engine pipelines, 3D assets, UI/UX)*
-*   **Rogan** — Lead Writer & Game Designer *(Narrative architecture, worldbuilding)*
-*   **Osman** — Audio Engineer & Composer *(Synthesizer soundscapes, ambient sound design)*
-
-*We utilize a dedicated agentic AI workflow (Anastasia System) to optimize UI/UX layouts, script validation routines, and coordinate project roadmaps.*
+*I utilize a dedicated agentic AI workflow (Anastasia System) to optimize UI/UX layouts, script validation routines, and coordinate project roadmaps.*
 
 ---
 
@@ -53,5 +50,4 @@ Frameworks :: Web APIs, Node.js, Agentic AI Architectures
 *   **Open-Source Repositories:** [GitHub Organization](https://github.com/onthewaygames)
 *   **Business Inquiries:** [LinkedIn Profile](https://www.linkedin.com/in/burcosmankilavuz/)
 
----
-*“Yapmadıkça hiçbir şey değişmez.”*
+
