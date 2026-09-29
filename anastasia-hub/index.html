@@ -55,7 +55,7 @@
       <div>
         <div class="flex items-center space-x-1.5">
           <h1 class="text-base font-bold tracking-tight text-white">ANASTASIA</h1>
-          <span class="text-[10px] bg-purple-950/80 text-purple-300 px-1.5 py-0.5 rounded border border-purple-800/40 font-mono">ŁÓDŹ</span>
+          <span class="text-[10px] bg-purple-950/80 text-purple-300 px-1.5 py-0.5 rounded border border-purple-800/40 font-mono">DEFTER BAZLI</span>
         </div>
         <p class="text-xs text-slate-400 flex items-center gap-1">
           <span>Legionów 80</span>
@@ -63,33 +63,33 @@
         </p>
       </div>
     </div>
-    <button onclick="resetData()" id="refreshBtn" title="Listeyi Sıfırla / Tazele" class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/40 text-purple-300 active:scale-95 transition-all">
+    <button onclick="resetData()" id="refreshBtn" title="Listeyi Sıfırla / Deftere Eşitle" class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/40 text-purple-300 active:scale-95 transition-all">
       <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
     </button>
   </header>
 
-  <!-- ÖZET NAKİT & HARCAMA RADARI (EKİM 2026 KESİN HESAP) -->
+  <!-- ÖZET NAKİT & HARCAMA RADARI (KESİN MAAŞ: 5.904,81 PLN) -->
   <section class="card-glow rounded-2xl p-4 mb-4 relative overflow-hidden">
     <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-600/10 rounded-full blur-2xl pointer-events-none"></div>
     <div class="flex justify-between items-center mb-3">
       <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ekim 2026 Nakit Radarı</span>
       <span class="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/40">
-        🛡️ +440 PLN PDR Korundu
+        🛡️ +354,81 PLN PDR Korundu
       </span>
     </div>
     <div class="grid grid-cols-2 gap-3 mb-3">
       <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
-        <span class="text-[11px] text-slate-400 block mb-0.5">Toplam Alım Gücü</span>
-        <span class="text-lg font-bold text-white font-mono">6.500 <span class="text-xs text-purple-400 font-normal">PLN</span></span>
-        <span class="text-[10px] text-slate-500 block">6.000 Nakit + 500 Pluxee</span>
+        <span class="text-[11px] text-slate-400 block mb-0.5">Maaş + Pluxee</span>
+        <span class="text-lg font-bold text-white font-mono">6.404,81 <span class="text-xs text-purple-400 font-normal">PLN</span></span>
+        <span class="text-[10px] text-slate-500 block">5.904,81 Nakit + 500 Pluxee</span>
       </div>
       <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
-        <span class="text-[11px] text-slate-400 block mb-0.5">Alınan / Toplam Sepet</span>
+        <span class="text-[11px] text-slate-400 block mb-0.5">Alınan / Acil Sepet</span>
         <div class="flex items-baseline space-x-1">
           <span id="spentAmount" class="text-lg font-bold text-fuchsia-400 font-mono">0</span>
-          <span class="text-xs text-slate-400 font-mono">/ <span id="totalPlanned">805</span> PLN</span>
+          <span class="text-xs text-slate-400 font-mono">/ <span id="totalPlanned">0</span> PLN</span>
         </div>
-        <span id="itemCountDisplay" class="text-[10px] text-slate-500 block">0/21 ürün alındı</span>
+        <span id="itemCountDisplay" class="text-[10px] text-slate-500 block">0/0 ürün alındı</span>
       </div>
     </div>
     <!-- İlerleme Çubuğu -->
@@ -101,10 +101,10 @@
   <!-- SEKMELER (NAVİGASYON) -->
   <div class="flex space-x-2 mb-4 overflow-x-auto hide-scrollbar pb-1">
     <button onclick="switchTab('checklist')" id="tab-checklist" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-purple-600 text-white shadow-lg shadow-purple-900/30 transition-all">
-      🛒 Alışveriş Checklist (Tek Tek)
+      🛒 Defter Checklist (Satır Satır)
     </button>
     <button onclick="switchTab('budget')" id="tab-budget" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-[#12141f] text-slate-400 border border-slate-800 transition-all">
-      📊 Kesin Bütçe (31 Kalem)
+      📊 Kesin Bütçe (5.904,81)
     </button>
     <button onclick="switchTab('health')" id="tab-health" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-[#12141f] text-slate-400 border border-slate-800 transition-all">
       💉 Sağlık & Cilt Rotası
@@ -114,7 +114,7 @@
     </button>
   </div>
 
-  <!-- ================= TAB 1: ALIŞVERİŞ CHECKLİST (TEK TEK AYRILMIŞ) ================= -->
+  <!-- ================= TAB 1: DEFTER CHECKLİST (TEK TEK HER SATIR) ================= -->
   <div id="view-checklist" class="tab-view space-y-3">
     <!-- Hızlı Ekleme Çubuğu -->
     <div class="flex space-x-2">
@@ -137,67 +137,55 @@
     </div>
   </div>
 
-  <!-- ================= TAB 2: EKİM BÜTÇESİ (KESİN 31 KALEM) ================= -->
+  <!-- ================= TAB 2: EKİM BÜTÇESİ (KESİN 5.904,81 PLN HESABI) ================= -->
   <div id="view-budget" class="tab-view hidden space-y-3">
     <div class="card-glow rounded-xl p-3.5 space-y-2.5">
       <div class="flex justify-between items-center pb-2 border-b border-slate-800">
-        <span class="text-xs font-bold text-purple-300">GELİR & ALIM GÜCÜ</span>
-        <span class="text-xs font-bold font-mono text-emerald-400">6.500 PLN</span>
+        <span class="text-xs font-bold text-purple-300">KESİN GELİR & GÜÇ</span>
+        <span class="text-xs font-bold font-mono text-emerald-400">6.404,81 PLN</span>
       </div>
       <div class="text-[11px] text-slate-400 space-y-1 bg-black/30 p-2 rounded-lg">
-        <div class="flex justify-between"><span>• Net Nakit Maaş (Banka):</span><span class="font-mono text-slate-200">6.000 PLN</span></div>
-        <div class="flex justify-between"><span>• Pluxee Yemek Kartı (Market):</span><span class="font-mono text-slate-200">500 PLN</span></div>
+        <div class="flex justify-between"><span>• Net Nakit Maaş (Yatan):</span><span class="font-mono text-slate-200 font-bold">5.904,81 PLN</span></div>
+        <div class="flex justify-between"><span>• Pluxee Yemek Kartı (Market):</span><span class="font-mono text-slate-200">500,00 PLN</span></div>
       </div>
 
-      <div class="text-xs font-bold text-slate-300 pt-1">Banka Hesabı Çıkışları (5.560 PLN):</div>
+      <div class="text-xs font-bold text-slate-300 pt-1">Banka Hesabı Çıkışları (5.550,00 PLN):</div>
       <div class="space-y-1.5 text-xs text-slate-300">
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🏠 Yeni Ev Kirası</span>
-          <span class="font-mono font-bold">2.100 PLN</span>
+          <span class="font-mono font-bold">2.100,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🚗 Araba Kredisi Taksiti</span>
-          <span class="font-mono font-bold">1.000 PLN</span>
+          <span class="font-mono font-bold">1.000,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🌿 15g Medikal Esrar (CMK Reçete + Eczane)</span>
-          <span class="font-mono font-bold text-purple-300">945 PLN</span>
+          <span class="font-mono font-bold text-purple-300">945,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🚬 Dalia Sigarası (Günde 1 Paket x 30 Gün)</span>
-          <span class="font-mono font-bold">555 PLN</span>
+          <span class="font-mono font-bold">555,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🛒 Market Nakit Katkısı (Pluxee Üstü)</span>
-          <span class="font-mono font-bold">500 PLN</span>
+          <span class="font-mono font-bold">500,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
-          <span class="text-slate-400">🍳 Mutfak Hayatta Kalma (Tek Tek Kalemler)</span>
-          <span class="font-mono font-bold">265 PLN</span>
-        </div>
-        <div class="flex justify-between pb-1 border-b border-slate-800/60">
-          <span class="text-slate-400">🚨 Acil Sağlık & Cilt Kremleri</span>
-          <span class="font-mono font-bold">220 PLN</span>
-        </div>
-        <div class="flex justify-between pb-1 border-b border-slate-800/60">
-          <span class="text-slate-400">🖥️ 2x North Bayou F80 Monitör Kolu</span>
-          <span class="font-mono font-bold text-fuchsia-300">160 PLN</span>
-        </div>
-        <div class="flex justify-between pb-1 border-b border-slate-800/60">
-          <span class="text-slate-400">🚿 Banyo & Hijyen (Squatty, Paspas, Askılık)</span>
-          <span class="font-mono font-bold">160 PLN</span>
+          <span class="text-slate-400">🚨 Acil Sağlık & Cilt Kremleri (Clotrimazol, Cicaplast vb.)</span>
+          <span class="font-mono font-bold">220,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🌐 İnternet + Telefon + 6 Gün Ofis Ulaşım</span>
-          <span class="font-mono font-bold">130 PLN</span>
+          <span class="font-mono font-bold">130,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
           <span class="text-slate-400">🤖 Claude Aboneliği</span>
-          <span class="font-mono font-bold">100 PLN</span>
+          <span class="font-mono font-bold">100,00 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60 text-emerald-400">
           <span>🏥 Kıl Dönmesi Cerrahi (Medicover BSH)</span>
-          <span class="font-mono font-bold">0 PLN (250 Tasarruf!)</span>
+          <span class="font-mono font-bold">0,00 PLN (250 Tasarruf!)</span>
         </div>
       </div>
 
@@ -206,7 +194,7 @@
           <span class="text-xs font-bold text-emerald-400 block">🛡️ ARABA İADESİ PDR REZERVİ</span>
           <span class="text-[10px] text-slate-400">Łódź boyasız kapı göçüğü düzeltme fonu</span>
         </div>
-        <span class="text-base font-bold font-mono text-emerald-300">+440 PLN</span>
+        <span class="text-base font-bold font-mono text-emerald-300">+354,81 PLN</span>
       </div>
     </div>
   </div>
@@ -303,47 +291,58 @@
       if (tg.setBackgroundColor) tg.setBackgroundColor('#0a0b10');
     }
 
-    // BURÇ'UN DEFTERİNDEN & OTURUMDAN ÇIKAN TEK TEK AYRILMIŞ MASTER LİSTE
-    const exactMasterData = [
+    // DEFTERİN 2 SAYFASINDAN KELİMESİ KELİMESİNE OKUNAN VERİ
+    const exactNotebookData = [
       {
-        category: "🚨 SAĞLIK & KİŞİSEL BAKIM (ACİL)",
+        category: "🚨 SAĞLIK & KİŞİSEL BAKIM (ACİL - BUGÜN)",
         items: [
-          {id: "h1", name: "Clotrimazolum Krem (Apış Arası Mantar)", price: 15, store: "Apteka", done: false},
-          {id: "h2", name: "La Roche-Posay Cicaplast B5+ (Yüz Bariyeri)", price: 40, store: "Apteka / Rossmann", done: false},
-          {id: "h3", name: "CeraVe Nemlendirici Losyon (Parfümsüz Sade)", price: 55, store: "Rossmann / Hebe", done: false},
-          {id: "h4", name: "Garnier Hair Food (Saç Bakım Kremi)", price: 30, store: "Rossmann", done: false},
-          {id: "h5", name: "Su Bazlı Kayganlaştırıcı (Durex Naturals Lube)", price: 35, store: "Rossmann / Hebe", done: false},
-          {id: "h6", name: "%100 Pamuklu Bol Boxer (3'lü Paket)", price: 45, store: "H&M / Pepco / Action", done: false}
+          {id: "h1", name: "Clotrimazolum Krem (Apış Arası Mantar)", price: 15, store: "Apteka", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "h2", name: "La Roche-Posay Cicaplast B5+ (Yüz Bariyeri)", price: 40, store: "Apteka / Rossmann", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "h3", name: "CeraVe Nemlendirici Losyon (Parfümsüz Sade)", price: 55, store: "Rossmann / Hebe", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "h4", name: "Garnier Hair Food (Saç Bakım Kremi)", price: 30, store: "Rossmann", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "h5", name: "Su Bazlı Kayganlaştırıcı (Durex Naturals Lube)", price: 35, store: "Rossmann / Hebe", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "h6", name: "%100 Pamuklu Bol Boxer (3'lü Paket)", price: 45, store: "H&M / Pepco / Action", badge: "⭐ Acil", isUrgent: true, done: false}
         ]
       },
       {
-        category: "🍳 MUTFAK (HAYATTA KALMA - TEK TEK)",
+        category: "🍳 MUTFAK (DEFTER SAYFA 1 - TEK TEK)",
         items: [
-          {id: "k1", name: "Çatal / Bıçak / Kaşık Seti", price: 45, store: "Pepco / Action / IKEA", done: false},
-          {id: "k2", name: "Mutfak Bıçağı", price: 20, store: "Pepco / Action", done: false},
-          {id: "k3", name: "Kesme Tahtası", price: 15, store: "Pepco / Action", done: false},
-          {id: "k4", name: "Tava", price: 40, store: "Action / IKEA", done: false},
-          {id: "k5", name: "Tencere", price: 40, store: "Action / IKEA", done: false},
-          {id: "k6", name: "Mutfak Çöp Kutusu", price: 30, store: "Pepco / Action", done: false},
-          {id: "k7", name: "Plastik Siyah Lavabo Matı", price: 20, store: "Pepco / Action", done: false},
-          {id: "k8", name: "Deterjan Tutacağı / Standı", price: 15, store: "Pepco / Action", done: false},
-          {id: "k9", name: "Makarna Süzgeci", price: 15, store: "Pepco / Action", done: false},
-          {id: "k10", name: "Suluk / Matara (1L Su Takibi)", price: 25, store: "Pepco / Rossmann", done: false}
+          {id: "m1", name: "Çöp Kutusu (Mutfak)", price: 30, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m2", name: "Bıçak", price: 20, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m3", name: "Kesme Tahtası", price: 15, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m4", name: "Çatal / Kaşık", price: 35, store: "Pepco / Action / IKEA", badge: "Temel", isUrgent: true, done: false},
+          {id: "m5", name: "Yemek Kaşığı vs.", price: 15, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m6", name: "Mutfak Lavabo Matı (Plastik)", price: 20, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m7", name: "Deterjan Tutacağı", price: 15, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m8", name: "Tencere", price: 40, store: "Action / IKEA", badge: "Temel", isUrgent: true, done: false},
+          {id: "m9", name: "Tava", price: 40, store: "Action / IKEA", badge: "Temel", isUrgent: true, done: false},
+          {id: "m10", name: "Çöp Kutusu (2. Kutu)", price: 25, store: "Pepco / Action", badge: "Normal", isUrgent: false, done: false},
+          {id: "m11", name: "Makarna Süzgeci", price: 15, store: "Pepco / Action", badge: "Temel", isUrgent: true, done: false},
+          {id: "m12", name: "Suluk", price: 25, store: "Pepco / Rossmann", badge: "Temel", isUrgent: true, done: false},
+          {id: "m13", name: "Şarap Kadehi", price: 20, store: "Pepco / Action", badge: "Keyif", isUrgent: false, done: false},
+          {id: "m14", name: "Tirbüşon", price: 10, store: "Pepco / Action", badge: "Keyif", isUrgent: false, done: false},
+          {id: "m15", name: "Espresso Makinesi (?) [Cansu Verecek]", price: 0, store: "Cansu", badge: "Bedelsiz", isUrgent: false, done: false},
+          {id: "m16", name: "Fırın (?)", price: 0, store: "Opsiyonel", badge: "İleride", isUrgent: false, done: false}
         ]
       },
       {
-        category: "🚿 BANYO & DÜZEN",
+        category: "🖥️ ÇALIŞMA ALANI & EV (DEFTER SAYFA 2)",
         items: [
-          {id: "b1", name: "Klozet Ayak Yükseltici (Squatty Potty)", price: 35, store: "Action / Allegro", done: false},
-          {id: "b2", name: "Banyo Paspası (Islak Zemin Önleme) ⭐", price: 30, store: "Pepco / Jysk", done: false},
-          {id: "b3", name: "Çamaşır Askılığı (Kıyafet Kurutma) ⭐", price: 50, store: "Action / Pepco", done: false},
-          {id: "b4", name: "Tartı (Vücut / Sağlık Takibi)", price: 45, store: "Action / Allegro", done: false}
-        ]
-      },
-      {
-        category: "🖥️ ÇALIŞMA ALANI & ERGONOMİ",
-        items: [
-          {id: "w1", name: "2x North Bayou F80 Monitör Kolu", price: 160, store: "Allegro (BLIK)", done: false}
+          {id: "w1", name: "2x Monitör Tutacağı ⭐ (North Bayou F80)", price: 160, store: "Allegro (BLIK)", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w2", name: "Tuvalet Yükseltici ⭐ (Squatty Potty)", price: 35, store: "Action / Allegro", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w3", name: "Banyo Paspası ⭐", price: 30, store: "Pepco / Jysk", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w4", name: "Çamaşır Askılığı ⭐", price: 50, store: "Action / Pepco", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w5", name: "Keyboard Pad ⭐", price: 40, store: "Allegro / Action", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w6", name: "Banyo Tezgahı ⭐ (Düzenleyici)", price: 30, store: "Action / Pepco", badge: "⭐ Acil", isUrgent: true, done: false},
+          {id: "w7", name: "Gardırop ⭐", price: 150, store: "IKEA / Jysk", badge: "Faz 2", isUrgent: false, done: false},
+          {id: "w8", name: "Gaming Chair (Üstü Çizili - Ertelendi)", price: 0, store: "İptal", badge: "İptal", isUrgent: false, isCancelled: true, done: false},
+          {id: "w9", name: "Halı", price: 80, store: "Jysk / IKEA", badge: "İleride", isUrgent: false, done: false},
+          {id: "w10", name: "Mutfak Halısı / Yolluk", price: 40, store: "Action / Pepco", badge: "İleride", isUrgent: false, done: false},
+          {id: "w11", name: "Speaker (Batarya Sıkıntılı) ⭐?", price: 0, store: "Tamir / Opsiyonel", badge: "Opsiyonel", isUrgent: false, done: false},
+          {id: "w12", name: "Cam / Mic", price: 0, store: "İleride", badge: "Opsiyonel", isUrgent: false, done: false},
+          {id: "w13", name: "Bong", price: 50, store: "Trafika / Allegro", badge: "Keyif", isUrgent: false, done: false},
+          {id: "w14", name: "Kül Tablası", price: 15, store: "Pepco / Action", badge: "Keyif", isUrgent: false, done: false},
+          {id: "w15", name: "Jack (Ses Kablosu)", price: 15, store: "Action / Allegro", badge: "Opsiyonel", isUrgent: false, done: false}
         ]
       }
     ];
@@ -352,15 +351,15 @@
     let currentCategoryFilter = "ALL";
 
     function loadData() {
-      const stored = localStorage.getItem("anastasia_shopping_v3");
+      const stored = localStorage.getItem("anastasia_shopping_notebook_v4");
       if (stored) {
         try {
           masterData = JSON.parse(stored);
         } catch (e) {
-          masterData = JSON.parse(JSON.stringify(exactMasterData));
+          masterData = JSON.parse(JSON.stringify(exactNotebookData));
         }
       } else {
-        masterData = JSON.parse(JSON.stringify(exactMasterData));
+        masterData = JSON.parse(JSON.stringify(exactNotebookData));
       }
       renderCategories();
       renderItems();
@@ -368,11 +367,12 @@
     }
 
     function saveData() {
-      localStorage.setItem("anastasia_shopping_v3", JSON.stringify(masterData));
+      localStorage.setItem("anastasia_shopping_notebook_v4", JSON.stringify(masterData));
       updateRadar();
     }
 
     function toggleItem(catIdx, itemIdx) {
+      if (masterData[catIdx].items[itemIdx].isCancelled) return;
       if (tg && tg.HapticFeedback) {
         tg.HapticFeedback.impactOccurred("light");
       }
@@ -389,18 +389,22 @@
 
       masterData.forEach(cat => {
         cat.items.forEach(it => {
-          total += (it.price || 0);
-          totalCount++;
-          if (it.done) {
-            spent += (it.price || 0);
-            completedCount++;
+          if (it.isCancelled) return;
+          // Sadece acil / planlanan ürünleri sepete dahil et
+          if (it.isUrgent) {
+            total += (it.price || 0);
+            totalCount++;
+            if (it.done) {
+              spent += (it.price || 0);
+              completedCount++;
+            }
           }
         });
       });
 
       document.getElementById("spentAmount").innerText = spent;
       document.getElementById("totalPlanned").innerText = total;
-      document.getElementById("itemCountDisplay").innerText = `${completedCount}/${totalCount} ürün alındı`;
+      document.getElementById("itemCountDisplay").innerText = `${completedCount}/${totalCount} acil ürün alındı`;
 
       const pct = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
       document.getElementById("progressBar").style.width = `${pct}%`;
@@ -443,29 +447,48 @@
         cat.items.forEach((it, itemIdx) => {
           const itemCard = document.createElement("div");
           const isDone = it.done;
-          itemCard.className = `p-3 rounded-xl border flex items-center justify-between transition-all duration-200 cursor-pointer ${
-            isDone 
-              ? 'bg-purple-950/10 border-slate-900/60 opacity-50' 
-              : 'card-glow border-purple-900/20 active:scale-[0.99]'
+          const isCancelled = it.isCancelled;
+
+          itemCard.className = `p-3 rounded-xl border flex items-center justify-between transition-all duration-200 ${
+            isCancelled 
+              ? 'bg-red-950/10 border-red-900/30 opacity-40 cursor-not-allowed' 
+              : isDone 
+                ? 'bg-purple-950/10 border-slate-900/60 opacity-50 cursor-pointer' 
+                : 'card-glow border-purple-900/20 active:scale-[0.99] cursor-pointer'
           }`;
           itemCard.onclick = () => toggleItem(catIdx, itemIdx);
+
+          let badgeHtml = '';
+          if (it.badge) {
+            const badgeColor = it.badge.includes('⭐') 
+              ? 'bg-amber-950/70 text-amber-300 border-amber-800/40' 
+              : it.badge === 'İptal' 
+                ? 'bg-red-950/70 text-red-400 border-red-800/40' 
+                : 'bg-slate-900 text-slate-400 border-slate-800';
+            badgeHtml = `<span class="text-[9px] px-1.5 py-0.2 rounded border font-mono ${badgeColor} mr-1.5">${it.badge}</span>`;
+          }
 
           itemCard.innerHTML = `
             <div class="flex items-center space-x-3 overflow-hidden">
               <div class="w-5 h-5 rounded-lg flex items-center justify-center border transition-all ${
                 isDone 
                   ? 'bg-purple-600 border-purple-500 text-white' 
-                  : 'border-slate-700 bg-black/40 text-transparent'
+                  : isCancelled 
+                    ? 'border-red-900 bg-red-950/40 text-red-500' 
+                    : 'border-slate-700 bg-black/40 text-transparent'
               }">
-                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                <i data-lucide="${isCancelled ? 'x' : 'check'}" class="w-3.5 h-3.5"></i>
               </div>
               <div class="truncate">
-                <span class="text-xs font-medium block truncate ${isDone ? 'line-through text-slate-500' : 'text-slate-100'}">${it.name}</span>
+                <div class="flex items-center">
+                  ${badgeHtml}
+                  <span class="text-xs font-medium truncate ${isDone || isCancelled ? 'line-through text-slate-500' : 'text-slate-100'}">${it.name}</span>
+                </div>
                 <span class="text-[10px] text-slate-500 block">${it.store || 'Genel'}</span>
               </div>
             </div>
             <div class="text-right pl-2 flex-shrink-0 font-mono">
-              <span class="text-xs font-bold ${isDone ? 'text-slate-500' : 'text-purple-300'}">~${it.price || 0}</span>
+              <span class="text-xs font-bold ${isDone || isCancelled ? 'text-slate-500' : 'text-purple-300'}">~${it.price || 0}</span>
               <span class="text-[10px] text-slate-500 block">PLN</span>
             </div>
           `;
@@ -486,6 +509,8 @@
         name: val,
         price: 0,
         store: "Hızlı Ekle",
+        badge: "Yeni",
+        isUrgent: true,
         done: false
       });
 
@@ -517,7 +542,7 @@
     function resetData() {
       const btn = document.getElementById("refreshBtn");
       btn.classList.add("animate-spin");
-      localStorage.removeItem("anastasia_shopping_v3");
+      localStorage.removeItem("anastasia_shopping_notebook_v4");
       loadData();
       setTimeout(() => {
         btn.classList.remove("animate-spin");
