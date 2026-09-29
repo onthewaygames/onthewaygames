@@ -37,16 +37,12 @@
       border: 1px solid rgba(157, 78, 221, 0.15);
       box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
     }
-    .card-glow-active {
-      border: 1px solid rgba(157, 78, 221, 0.4);
-      box-shadow: 0 4px 25px 0 rgba(157, 78, 221, 0.15);
-    }
   </style>
 </head>
 <body class="p-4 pb-24 text-slate-100 min-h-screen">
 
   <!-- ÜST HEADER: Anastasia Kimliği & Canlı Durum -->
-  <header class="flex items-center justify-between mb-5 pt-1">
+  <header class="flex items-center justify-between mb-4 pt-1">
     <div class="flex items-center space-x-3">
       <div class="relative">
         <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-700 via-indigo-600 to-fuchsia-500 p-0.5 shadow-lg shadow-purple-900/40">
@@ -63,37 +59,37 @@
         </div>
         <p class="text-xs text-slate-400 flex items-center gap-1">
           <span>Legionów 80</span>
-          <span class="text-purple-400 font-mono">● Canlı Senkron</span>
+          <span class="text-purple-400 font-mono">● Canlı Takip</span>
         </p>
       </div>
     </div>
-    <button onclick="syncData()" id="refreshBtn" class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/40 text-purple-300 active:scale-95 transition-all">
-      <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+    <button onclick="resetData()" id="refreshBtn" title="Listeyi Sıfırla / Tazele" class="p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/40 text-purple-300 active:scale-95 transition-all">
+      <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
     </button>
   </header>
 
   <!-- ÖZET NAKİT & HARCAMA RADARI (EKİM 2026 KESİN HESAP) -->
-  <section class="card-glow rounded-2xl p-4 mb-5 relative overflow-hidden">
+  <section class="card-glow rounded-2xl p-4 mb-4 relative overflow-hidden">
     <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-600/10 rounded-full blur-2xl pointer-events-none"></div>
     <div class="flex justify-between items-center mb-3">
       <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ekim 2026 Nakit Radarı</span>
       <span class="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-800/40">
-        🛡️ +440 PLN PDR Kalkanı
+        🛡️ +440 PLN PDR Korundu
       </span>
     </div>
     <div class="grid grid-cols-2 gap-3 mb-3">
       <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
         <span class="text-[11px] text-slate-400 block mb-0.5">Toplam Alım Gücü</span>
         <span class="text-lg font-bold text-white font-mono">6.500 <span class="text-xs text-purple-400 font-normal">PLN</span></span>
-        <span class="text-[10px] text-slate-500 block">6.000 Maaş + 500 Pluxee</span>
+        <span class="text-[10px] text-slate-500 block">6.000 Nakit + 500 Pluxee</span>
       </div>
       <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
-        <span class="text-[11px] text-slate-400 block mb-0.5">Acil Sepet & Alınanlar</span>
+        <span class="text-[11px] text-slate-400 block mb-0.5">Alınan / Toplam Sepet</span>
         <div class="flex items-baseline space-x-1">
           <span id="spentAmount" class="text-lg font-bold text-fuchsia-400 font-mono">0</span>
           <span class="text-xs text-slate-400 font-mono">/ <span id="totalPlanned">805</span> PLN</span>
         </div>
-        <span id="itemCountDisplay" class="text-[10px] text-slate-500 block">0/18 ürün tamam</span>
+        <span id="itemCountDisplay" class="text-[10px] text-slate-500 block">0/21 ürün alındı</span>
       </div>
     </div>
     <!-- İlerleme Çubuğu -->
@@ -105,7 +101,7 @@
   <!-- SEKMELER (NAVİGASYON) -->
   <div class="flex space-x-2 mb-4 overflow-x-auto hide-scrollbar pb-1">
     <button onclick="switchTab('checklist')" id="tab-checklist" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-purple-600 text-white shadow-lg shadow-purple-900/30 transition-all">
-      🛒 Acil Checklist (805 PLN)
+      🛒 Alışveriş Checklist (Tek Tek)
     </button>
     <button onclick="switchTab('budget')" id="tab-budget" class="tab-btn px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap bg-[#12141f] text-slate-400 border border-slate-800 transition-all">
       📊 Kesin Bütçe (31 Kalem)
@@ -118,11 +114,11 @@
     </button>
   </div>
 
-  <!-- ================= TAB 1: ALIŞVERİŞ CHECKLİST ================= -->
-  <div id="view-checklist" class="tab-view space-y-4">
+  <!-- ================= TAB 1: ALIŞVERİŞ CHECKLİST (TEK TEK AYRILMIŞ) ================= -->
+  <div id="view-checklist" class="tab-view space-y-3">
     <!-- Hızlı Ekleme Çubuğu -->
     <div class="flex space-x-2">
-      <input type="text" id="quickItemInput" placeholder="Hızlı ürün ekle (örn: Çatal kaşık)..." 
+      <input type="text" id="quickItemInput" placeholder="Hızlı ürün ekle (örn: Çatal bıçak)..." 
              class="flex-1 bg-[#12141f] border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-all"
              onkeypress="if(event.key==='Enter') addQuickItem()">
       <button onclick="addQuickItem()" class="bg-purple-600 active:bg-purple-700 text-white px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all">
@@ -145,7 +141,7 @@
   <div id="view-budget" class="tab-view hidden space-y-3">
     <div class="card-glow rounded-xl p-3.5 space-y-2.5">
       <div class="flex justify-between items-center pb-2 border-b border-slate-800">
-        <span class="text-xs font-bold text-purple-300">GELİR & GÜÇ DAĞILIMI</span>
+        <span class="text-xs font-bold text-purple-300">GELİR & ALIM GÜCÜ</span>
         <span class="text-xs font-bold font-mono text-emerald-400">6.500 PLN</span>
       </div>
       <div class="text-[11px] text-slate-400 space-y-1 bg-black/30 p-2 rounded-lg">
@@ -176,7 +172,7 @@
           <span class="font-mono font-bold">500 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
-          <span class="text-slate-400">🍳 Mutfak Hayatta Kalma (Tava, Çatal, Çöp vb.)</span>
+          <span class="text-slate-400">🍳 Mutfak Hayatta Kalma (Tek Tek Kalemler)</span>
           <span class="font-mono font-bold">265 PLN</span>
         </div>
         <div class="flex justify-between pb-1 border-b border-slate-800/60">
@@ -307,37 +303,40 @@
       if (tg.setBackgroundColor) tg.setBackgroundColor('#0a0b10');
     }
 
-    // Kesin Revize Edilmiş Master Liste (Gaming Chair, Gardırop vb. çıkarıldı!)
+    // BURÇ'UN DEFTERİNDEN & OTURUMDAN ÇIKAN TEK TEK AYRILMIŞ MASTER LİSTE
     const exactMasterData = [
       {
-        category: "🚨 SAĞLIK & KİŞİSEL BAKIM (ACİL - BUGÜN)",
+        category: "🚨 SAĞLIK & KİŞİSEL BAKIM (ACİL)",
         items: [
           {id: "h1", name: "Clotrimazolum Krem (Apış Arası Mantar)", price: 15, store: "Apteka", done: false},
-          {id: "h2", name: "La Roche-Posay Cicaplast B5+ (Yüz Bariyeri)", price: 40, store: "Apteka", done: false},
-          {id: "h3", name: "CeraVe Nemlendirici Losyon (Parfümsüz)", price: 55, store: "Rossmann", done: false},
+          {id: "h2", name: "La Roche-Posay Cicaplast B5+ (Yüz Bariyeri)", price: 40, store: "Apteka / Rossmann", done: false},
+          {id: "h3", name: "CeraVe Nemlendirici Losyon (Parfümsüz Sade)", price: 55, store: "Rossmann / Hebe", done: false},
           {id: "h4", name: "Garnier Hair Food (Saç Bakım Kremi)", price: 30, store: "Rossmann", done: false},
-          {id: "h5", name: "Su Bazlı Kayganlaştırıcı (Durex Naturals)", price: 35, store: "Rossmann", done: false},
-          {id: "h6", name: "%100 Pamuklu Bol Boxer (3'lü Paket)", price: 45, store: "Pepco / Action", done: false}
+          {id: "h5", name: "Su Bazlı Kayganlaştırıcı (Durex Naturals Lube)", price: 35, store: "Rossmann / Hebe", done: false},
+          {id: "h6", name: "%100 Pamuklu Bol Boxer (3'lü Paket)", price: 45, store: "H&M / Pepco / Action", done: false}
         ]
       },
       {
-        category: "🍳 MUTFAK (HAYATTA KALMA & DÜZEN)",
+        category: "🍳 MUTFAK (HAYATTA KALMA - TEK TEK)",
         items: [
-          {id: "k1", name: "Çatal / Bıçak / Kaşık Seti (Tahta Kaşığa Veda!)", price: 45, store: "Pepco / Action / IKEA", done: false},
-          {id: "k2", name: "Kesme Tahtası + Mutfak Bıçağı", price: 35, store: "Pepco / Action", done: false},
-          {id: "k3", name: "1x Tava + 1x Tencere", price: 80, store: "Action / IKEA", done: false},
-          {id: "k4", name: "Çöp Kutusu (Sadece Mutfak)", price: 30, store: "Pepco / Action", done: false},
-          {id: "k5", name: "Plastik Siyah Lavabo Matı", price: 20, store: "Pepco / Action", done: false},
-          {id: "k6", name: "Deterjan Tutacağı / Standı", price: 15, store: "Pepco / Action", done: false},
-          {id: "k7", name: "Makarna Süzgeci + Suluk / Matara", price: 40, store: "Pepco / Action", done: false}
+          {id: "k1", name: "Çatal / Bıçak / Kaşık Seti", price: 45, store: "Pepco / Action / IKEA", done: false},
+          {id: "k2", name: "Mutfak Bıçağı", price: 20, store: "Pepco / Action", done: false},
+          {id: "k3", name: "Kesme Tahtası", price: 15, store: "Pepco / Action", done: false},
+          {id: "k4", name: "Tava", price: 40, store: "Action / IKEA", done: false},
+          {id: "k5", name: "Tencere", price: 40, store: "Action / IKEA", done: false},
+          {id: "k6", name: "Mutfak Çöp Kutusu", price: 30, store: "Pepco / Action", done: false},
+          {id: "k7", name: "Plastik Siyah Lavabo Matı", price: 20, store: "Pepco / Action", done: false},
+          {id: "k8", name: "Deterjan Tutacağı / Standı", price: 15, store: "Pepco / Action", done: false},
+          {id: "k9", name: "Makarna Süzgeci", price: 15, store: "Pepco / Action", done: false},
+          {id: "k10", name: "Suluk / Matara (1L Su Takibi)", price: 25, store: "Pepco / Rossmann", done: false}
         ]
       },
       {
         category: "🚿 BANYO & DÜZEN",
         items: [
           {id: "b1", name: "Klozet Ayak Yükseltici (Squatty Potty)", price: 35, store: "Action / Allegro", done: false},
-          {id: "b2", name: "Banyo Paspası (Islak Zemin Önleme)", price: 30, store: "Pepco / Jysk", done: false},
-          {id: "b3", name: "Çamaşır Askılığı (Kıyafet Kurutma)", price: 50, store: "Action / Pepco", done: false},
+          {id: "b2", name: "Banyo Paspası (Islak Zemin Önleme) ⭐", price: 30, store: "Pepco / Jysk", done: false},
+          {id: "b3", name: "Çamaşır Askılığı (Kıyafet Kurutma) ⭐", price: 50, store: "Action / Pepco", done: false},
           {id: "b4", name: "Tartı (Vücut / Sağlık Takibi)", price: 45, store: "Action / Allegro", done: false}
         ]
       },
@@ -353,7 +352,7 @@
     let currentCategoryFilter = "ALL";
 
     function loadData() {
-      const stored = localStorage.getItem("anastasia_shopping_cache_v2");
+      const stored = localStorage.getItem("anastasia_shopping_v3");
       if (stored) {
         try {
           masterData = JSON.parse(stored);
@@ -369,7 +368,7 @@
     }
 
     function saveData() {
-      localStorage.setItem("anastasia_shopping_cache_v2", JSON.stringify(masterData));
+      localStorage.setItem("anastasia_shopping_v3", JSON.stringify(masterData));
       updateRadar();
     }
 
@@ -515,10 +514,10 @@
       }
     }
 
-    function syncData() {
+    function resetData() {
       const btn = document.getElementById("refreshBtn");
       btn.classList.add("animate-spin");
-      localStorage.removeItem("anastasia_shopping_cache_v2");
+      localStorage.removeItem("anastasia_shopping_v3");
       loadData();
       setTimeout(() => {
         btn.classList.remove("animate-spin");
